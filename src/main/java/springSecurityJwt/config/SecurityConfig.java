@@ -22,16 +22,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                .httpBasic().disable()
+
                 .csrf().disable()
+                .cors().disable()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/admin/*").hasRole("ADMIN")
-                .antMatchers("/user/*").hasRole("USER")
+                .antMatchers("/admin/*","/add/*","/edit/*").hasRole("ADMIN")
+                .antMatchers("/user/*","/list/*").hasRole("USER")
                 .antMatchers("/register", "/auth").permitAll()
+                //.anyRequest()
+                //.authenticated()
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
+
     }
 
     @Bean
