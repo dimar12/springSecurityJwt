@@ -4,8 +4,6 @@ import Input from "react-validation/build/input";
 import CheckButton from "react-validation/build/button";
 import  axios from 'axios';
 
-import AuthService from "../service/auth.service";
-
 const required = value => {
     if (!value) {
         return (

@@ -100,6 +100,7 @@ export default class Data extends React.Component{
     const {name,email,phone,phoneError} = this.state;
 
     return(
+
     <Card className={"border border-dark bg-dark text-white"}>
         <Card.Header> {this.state.id ? "Update contact details" : "Add contact details"}</Card.Header>
         <Card.Body>
